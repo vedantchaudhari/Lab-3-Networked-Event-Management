@@ -1,0 +1,6 @@
+repo: 9127f3592c4c25d2b4d86fe901fab9ca47d409f2
+node: 67424c93dfd842a9eca0a291672a6e8809eda0b4
+branch: mancala
+latesttag: null
+latesttagdistance: 12
+changessincelatesttag: 12
