@@ -1,2 +1,1 @@
-# EGP-NETGAME-PROJECT-1
-Networked Mancala
+# Lab-3-Networked-Event-Management
