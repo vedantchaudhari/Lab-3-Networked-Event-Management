@@ -177,6 +177,8 @@
     <ClCompile Include="..\..\..\source\egp-mancala\util\LinkedList.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\Event.h" />
+    <ClInclude Include="..\..\..\source\egp-mancala\events\EventManager.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\util\LinkedList.h" />
   </ItemGroup>

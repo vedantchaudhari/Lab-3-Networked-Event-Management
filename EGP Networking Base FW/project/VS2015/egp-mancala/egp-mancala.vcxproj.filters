@@ -13,19 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\mancala">
+    <Filter Include="Source Files\Util">
+      <UniqueIdentifier>{280e8614-6b15-4ddf-a21f-339141658421}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Mancala">
       <UniqueIdentifier>{2e1c4e96-5003-4965-b609-09ad931f388f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\util">
-      <UniqueIdentifier>{280e8614-6b15-4ddf-a21f-339141658421}</UniqueIdentifier>
+    <Filter Include="Source Files\Events">
+      <UniqueIdentifier>{4f43d641-8b02-4fc7-b1e3-4e1640178609}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.c">
-      <Filter>Source Files\mancala</Filter>
+      <Filter>Source Files\Mancala</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\egp-mancala\util\LinkedList.c">
-      <Filter>Source Files\util</Filter>
+      <Filter>Source Files\Util</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\source\egp-mancala\Main.cpp">
       <Filter>Source Files</Filter>
@@ -33,10 +36,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h">
-      <Filter>Source Files\mancala</Filter>
+      <Filter>Source Files\Mancala</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\source\egp-mancala\util\LinkedList.h">
-      <Filter>Source Files\util</Filter>
+      <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\Event.h">
+      <Filter>Source Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\EventManager.h">
+      <Filter>Source Files\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
