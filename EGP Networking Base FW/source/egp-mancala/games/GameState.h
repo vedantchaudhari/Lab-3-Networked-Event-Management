@@ -12,22 +12,10 @@
 
 #include "RakNet/RakPeerInterface.h"
 
-#ifndef _EVENT_H_
-#define _EVENT_H_
+class GameState {
+private:
 
-#ifndef __cplusplus
-extern "C" {
-#endif // !__cplusplus
-
-	class GameState {
-	private:
-
-	public:
-		RakNet::RakPeerInterface* mpPeer;
-		RakNet::SystemAddress mHostAddress;
-	};
-
-#ifndef __cplusplus
-}
-#endif // !__cplusplus
-#endif // !_EVENT_H_
+public:
+	RakNet::RakPeerInterface* mpPeer;
+	RakNet::SystemAddress mHostAddress;
+};

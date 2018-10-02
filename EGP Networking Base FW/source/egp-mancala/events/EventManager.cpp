@@ -1,5 +1,3 @@
-#pragma once
-
 // Certificate of Authenticity
 //
 // EGP-405-01 Networking for Online Games
@@ -12,16 +10,12 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
-#include <iostream>
+#include "events/EventManager.h"
 
-#include "Event.h"
-#include "util/LinkedList.h"
+void EventManager::add() {
+	
+}
 
-class EventManager {
-private:
-	List* eventList = emptylist();
+void EventManager::execute() {
 
-public:
-	void add(Event e);
-	void execute();
-};
+}

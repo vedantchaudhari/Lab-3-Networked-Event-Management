@@ -20,8 +20,6 @@ extern "C" {
 #endif // __cplusplus
 
 	typedef struct node {
-		char username[16];
-		int USER_ID;
 
 		// Define player data that needs to be tracked by the server e.g. username string
 
