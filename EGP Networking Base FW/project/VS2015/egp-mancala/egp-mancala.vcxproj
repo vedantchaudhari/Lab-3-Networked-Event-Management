@@ -172,13 +172,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\egp-mancala\events\ColorEvent.cpp" />
     <ClCompile Include="..\..\..\source\egp-mancala\Main.cpp" />
     <ClCompile Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.c" />
     <ClCompile Include="..\..\..\source\egp-mancala\util\LinkedList.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\ColorEvent.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\events\Event.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\events\EventManager.h" />
+    <ClInclude Include="..\..\..\source\egp-mancala\games\GameState.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\util\LinkedList.h" />
   </ItemGroup>

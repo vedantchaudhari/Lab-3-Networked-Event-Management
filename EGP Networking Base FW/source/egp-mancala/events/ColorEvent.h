@@ -1,3 +1,5 @@
+#pragma once
+
 // Certificate of Authenticity
 //
 // EGP-405-01 Networking for Online Games
@@ -10,21 +12,15 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
-#ifndef _EVENT_H_
-#define _EVENT_H_
+#include <iostream>
 
-#ifndef __cplusplus
-extern "C" {
-#endif // !__cplusplus
+#include "events/Event.h"
 
-	class Event {
-	private:
+class ColorEvent : Event {
+private:
+	int color;
+public:
+	ColorEvent(int c) : color(c) {};
 
-	public:
-		virtual void execute() = 0;
-	};
-
-#ifndef __cplusplus
-}
-#endif // !__cplusplus
-#endif // !_EVENT_H_
+	virtual void execute() override;
+};

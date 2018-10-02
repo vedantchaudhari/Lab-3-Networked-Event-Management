@@ -10,6 +10,8 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
+#include "RakNet/RakPeerInterface.h"
+
 #ifndef _EVENT_H_
 #define _EVENT_H_
 
@@ -17,11 +19,12 @@
 extern "C" {
 #endif // !__cplusplus
 
-	class Event {
+	class GameState {
 	private:
 
 	public:
-		virtual void execute() = 0;
+		RakNet::RakPeerInterface* mpPeer;
+		RakNet::SystemAddress mHostAddress;
 	};
 
 #ifndef __cplusplus

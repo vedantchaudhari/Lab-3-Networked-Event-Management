@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Events">
       <UniqueIdentifier>{4f43d641-8b02-4fc7-b1e3-4e1640178609}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Events\Event">
+      <UniqueIdentifier>{de5edd00-eba1-4916-b1b3-bd9601a69d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{5a0c8be7-5eb5-4212-9d16-a6aa52236ce8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.c">
@@ -32,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\egp-mancala\Main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\egp-mancala\events\ColorEvent.cpp">
+      <Filter>Source Files\Events\Event</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\egp-mancala\events\EventManager.h">
       <Filter>Source Files\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\ColorEvent.h">
+      <Filter>Source Files\Events\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\games\GameState.h">
+      <Filter>Source Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
