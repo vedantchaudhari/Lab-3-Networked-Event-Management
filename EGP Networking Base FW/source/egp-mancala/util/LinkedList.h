@@ -1,3 +1,5 @@
+#pragma once
+
 // Certificate of Authenticity
 //
 // EGP-405-01 Networking for Online Games
@@ -12,36 +14,46 @@
 
 // Inspired by https://github.com/skorks/c-linked-list/blob/master/linkedlist.h
 
-#ifndef _LINKEDLIST_H_
-#define _LINKEDLIST_H_
+#include <iostream>
+#include <string>
 
-#ifdef __cplusplus
-extern "C" {
-#endif // __cplusplus
+#include "events/Event.h"
 
-	typedef struct node {
+struct Node {
+	EVENT_TYPE type;
+	Event* event;
 
-		// Define player data that needs to be tracked by the server e.g. username string
+	Node* next;
+};
 
-		struct node* next;
-	} Node;
+struct Head{
+	int count;
 
-	typedef struct list {
-		Node* head;
-	} List;
+	Node* headNode;
+};
 
-	List* emptylist();
+class LinkedList {
+private:
+	int dataCmp(int, int);
+	void displayNode(Node*);
 
-	void addNode(char username[16], int USER_ID, List * list);
-	void removeNode(char username[16], int USER_ID, List * list);
-	void display(List * list);
-	void reverse(List * list);
-	void destroy(List * list);
+	Head head;
 
-	int listLength(List * list);
+public:
+	LinkedList();
+	~LinkedList();
 
-#ifdef __cplusplus
-}
-#endif // __cplusplus
+	void addToHead(EVENT_TYPE, Event*);
+	bool removeFromHead();
 
-#endif // !_LINKEDLIST_H
+	void addNode(EVENT_TYPE, Event*);
+	bool deleteNode(EVENT_TYPE);
+	void deleteAllNodes();
+
+	bool isEmpty();
+	int getNoOfNodes();
+
+	void displayAllNodes();
+
+	Node* getHead();
+};

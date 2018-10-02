@@ -12,10 +12,16 @@
 
 #include "events/EventManager.h"
 
-void EventManager::add() {
-	
+EventManager::EventManager() {
+	eventList = new LinkedList;
+}
+
+void EventManager::add(EVENT_TYPE type, Event* e) {
+	eventList->addNode(type, e);
 }
 
 void EventManager::execute() {
+	Node* currNode = eventList->getHead();
 
+	currNode->event->execute();
 }

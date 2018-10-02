@@ -10,12 +10,15 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
+#include "events/EventManager.h"
 #include "RakNet/RakPeerInterface.h"
 
 class GameState {
 private:
-
+	
 public:
+	EventManager eventManager;
+
 	RakNet::RakPeerInterface* mpPeer;
 	RakNet::SystemAddress mHostAddress;
 };

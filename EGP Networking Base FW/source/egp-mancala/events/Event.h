@@ -1,3 +1,5 @@
+#pragma once
+
 // Certificate of Authenticity
 //
 // EGP-405-01 Networking for Online Games
@@ -10,21 +12,28 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
-#ifndef _EVENT_H_
-#define _EVENT_H_
+enum EVENT_TYPE {
+	INVALID_TYPE,
 
-#ifndef __cplusplus
-extern "C" {
-#endif // !__cplusplus
+	COLOR_EVENT,
+};
 
-	class Event {
-	private:
+const std::string EVENT_NAMES[3] = {
+	"Color Event",
+	"Event",
+	"Event"
+};
 
-	public:
-		virtual void execute() = 0;
-	};
+class Event {
+private:
+	EVENT_TYPE mType;
 
-#ifndef __cplusplus
-}
-#endif // !__cplusplus
-#endif // !_EVENT_H_
+public:
+	Event() { mType = INVALID_TYPE; };
+	Event(EVENT_TYPE _type) : mType(_type) {};
+	virtual ~Event() {};
+
+	virtual void execute() = 0;
+
+	std::string getName() { return EVENT_NAMES[mType]; };
+};

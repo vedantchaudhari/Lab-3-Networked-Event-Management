@@ -16,11 +16,13 @@
 
 #include "events/Event.h"
 
-class ColorEvent : Event {
+class ColorEvent : public Event {
 private:
+	EVENT_TYPE mType;
 	int color;
+
 public:
-	ColorEvent(int c) : color(c) {};
+	ColorEvent(int c) : mType(COLOR_EVENT), color(c) {};
 
 	virtual void execute() override;
 };

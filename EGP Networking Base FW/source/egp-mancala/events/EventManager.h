@@ -15,13 +15,16 @@
 #include <iostream>
 
 #include "Event.h"
+#include "ColorEvent.h"
 #include "util/LinkedList.h"
 
 class EventManager {
 private:
-	List* eventList = emptylist();
+	LinkedList* eventList;
 
 public:
-	void add(Event e);
+	EventManager();
+
+	void add(EVENT_TYPE type, Event* e);
 	void execute();
 };
