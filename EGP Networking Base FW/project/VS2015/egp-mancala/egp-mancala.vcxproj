@@ -179,6 +179,7 @@
     <ClCompile Include="..\..\..\source\egp-mancala\Main.cpp" />
     <ClCompile Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.c" />
     <ClCompile Include="..\..\..\source\egp-mancala\util\LinkedList.cpp" />
+    <ClCompile Include="..\..\..\source\egp-mancala\util\Thread.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\egp-mancala\events\ColorEvent.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\..\..\source\egp-mancala\games\GameState.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h" />
     <ClInclude Include="..\..\..\source\egp-mancala\util\LinkedList.h" />
+    <ClInclude Include="..\..\..\source\egp-mancala\util\Thread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

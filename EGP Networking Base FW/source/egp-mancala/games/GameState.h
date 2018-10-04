@@ -16,6 +16,12 @@
 #include "RakNet/RakNetTypes.h"
 #include "RakNet/RakPeerInterface.h"
 
+enum NETWORK_MESSAGE_TYPE {
+	ID_BASE_MESSAGE = ID_USER_PACKET_ENUM,
+	ID_COLOR_EVENT_MSG,
+	ID_DAMAGE_EVENT_MSG
+};
+
 class GameState {
 private:
 	struct NetworkData {
@@ -31,6 +37,9 @@ public:
 
 	RakNet::RakPeerInterface* mpPeer;
 	RakNet::SystemAddress mHostAddress;
+
+	GameState();
+	~GameState();
 
 	void initNetwork();
 

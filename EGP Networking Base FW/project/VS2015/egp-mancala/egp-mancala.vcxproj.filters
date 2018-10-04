@@ -51,6 +51,9 @@
     <ClCompile Include="..\..\..\source\egp-mancala\games\GameState.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\egp-mancala\util\Thread.c">
+      <Filter>Source Files\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h">
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\egp-mancala\events\DamageEvent.h">
       <Filter>Source Files\Events\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\util\Thread.h">
+      <Filter>Source Files\Util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

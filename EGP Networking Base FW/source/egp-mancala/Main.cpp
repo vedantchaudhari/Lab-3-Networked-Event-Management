@@ -5,10 +5,6 @@
 
 #include "games/GameState.h"
 
-enum NETWORK_MESSAGE_TYPE {
-
-};
-
 int main(void) {
 	GameState gs;
 
