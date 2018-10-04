@@ -15,20 +15,20 @@
 #pragma pack(push, 1)
 struct ColorEventPacket {
 	unsigned char typeID;
-	int color = 0;
+	int color;
 };
 #pragma pack(pop)
 
 #pragma pack(push, 1)
 struct DamageEventPacket {
 	unsigned char typeID;
-	int damage = 0;
+	int damage;
 };
 #pragma pack(pop)
 
 #pragma pack(push, 1)
 struct HealEventPacket {
 	unsigned char typeID;
-	int amount = 0;
+	int amount;
 };
 #pragma pack(pop)

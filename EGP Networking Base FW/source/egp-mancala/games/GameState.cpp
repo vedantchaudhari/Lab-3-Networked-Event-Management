@@ -32,10 +32,11 @@ void GameState::initNetwork() {
 	if (selection == 'H' || selection == 'h') {
 		mNetworkData.isHost = true;
 		mNetworkData.maxClients = 2;
-
+		
 		RakNet::SocketDescriptor sd(mNetworkData.serverPort, 0);
 		mpPeer->Startup(mNetworkData.maxClients, &sd, 1);
 		mpPeer->SetMaximumIncomingConnections(mNetworkData.maxClients);
+
 	}
 	else {
 		mNetworkData.isHost = false;
@@ -50,43 +51,43 @@ void GameState::handleInput() {
 	if (GetAsyncKeyState(0x43) & 1) {		// C KEY PRESSED
 		ColorEventPacket colorEvent[1];
 		colorEvent->typeID = ID_COLOR_EVENT_MSG;
-		colorEvent-> color = 1;
+		colorEvent-> color = rand() % 100;
 
 		if (mNetworkData.isHost) {
 			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				connectionGUID, true);
+				clientAddress, false);
 		}
 		else {
 			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				hostAddress, true);
+				hostAddress, false);
 		}
 	}
 	else if (GetAsyncKeyState(0x44) & 1) {	// D KEY PRESSED
 		DamageEventPacket damageEvent[1];
 		damageEvent->typeID = ID_DAMAGE_EVENT_MSG;
-		damageEvent->damage = 1;
+		damageEvent->damage = rand() % 100;
 		
 		if (mNetworkData.isHost) {
 			mpPeer->Send((char*)damageEvent, sizeof(DamageEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				connectionGUID, true);
+				clientAddress, false);
 		}
 		else {
 			mpPeer->Send((char*)damageEvent, sizeof(DamageEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				hostGUID, true);
+				hostAddress, false);
 		}
 	}
 	else if (GetAsyncKeyState(0x45) & 1) {	// E KEY PRESSED
-		HealEventPacket healPacket[1];
-		healPacket->typeID = ID_HEAL_EVENT_MSG;
-		healPacket->amount = 1;
+		HealEventPacket healEvent[1];
+		healEvent->typeID = ID_HEAL_EVENT_MSG;
+		healEvent->amount = rand() % 100;
 
 		if (mNetworkData.isHost) {
-			mpPeer->Send((char*)healPacket, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				connectionGUID, true);
+			mpPeer->Send((char*)healEvent, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				clientAddress, false);
 		}
 		else {
-			mpPeer->Send((char*)healPacket, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				hostGUID, true);
+			mpPeer->Send((char*)healEvent, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				hostAddress, false);
 		}
 	}
 	else if (GetAsyncKeyState(VK_ESCAPE)) {
@@ -111,12 +112,11 @@ void GameState::handleNetwork() {
 			break;
 		case ID_REMOTE_NEW_INCOMING_CONNECTION:
 			std::cout << "A client has connected" << std::endl;
-			connectionGUID = packet->guid;
+			clientAddress = packet->systemAddress;
 			break;
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 		{
 			std::cout << "Connected to server" << std::endl;
-			hostGUID = packet->guid;
 			hostAddress = packet->systemAddress;
 			break;
 		}
