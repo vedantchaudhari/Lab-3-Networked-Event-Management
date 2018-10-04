@@ -40,6 +40,7 @@ public:
 
 	RakNet::RakPeerInterface* mpPeer;
 	RakNet::RakNetGUID hostGUID;
+	RakNet::SystemAddress hostAddress;
 	RakNet::RakNetGUID connectionGUID;
 
 	bool exit = false;

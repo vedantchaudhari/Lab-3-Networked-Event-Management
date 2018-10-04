@@ -30,8 +30,6 @@ void GameState::initNetwork() {
 	std::cin >> mNetworkData.serverPort;
 
 	if (selection == 'H' || selection == 'h') {
-		std::cout << "Initializing Server..." << std::endl;
-		 
 		mNetworkData.isHost = true;
 		mNetworkData.maxClients = 2;
 
@@ -60,7 +58,7 @@ void GameState::handleInput() {
 		}
 		else {
 			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
-				hostGUID, true);
+				hostAddress, true);
 		}
 	}
 	else if (GetAsyncKeyState(0x44) & 1) {	// D KEY PRESSED
@@ -119,6 +117,7 @@ void GameState::handleNetwork() {
 		{
 			std::cout << "Connected to server" << std::endl;
 			hostGUID = packet->guid;
+			hostAddress = packet->systemAddress;
 			break;
 		}
 		case ID_NEW_INCOMING_CONNECTION:
@@ -144,7 +143,7 @@ void GameState::handleNetwork() {
 			break;
 		case ID_COLOR_EVENT_MSG:
 		{
-			ColorEventPacket* currPacket = (ColorEventPacket*)packet;
+			ColorEventPacket* currPacket = (ColorEventPacket*)packet->data;
 			ColorEvent* cEvent = new ColorEvent(currPacket->color);
 			eventManager.add(cEvent->getType(), cEvent);
 
@@ -152,7 +151,7 @@ void GameState::handleNetwork() {
 		}
 		case ID_DAMAGE_EVENT_MSG:
 		{
-			DamageEventPacket* currPacket = (DamageEventPacket*)packet;
+			DamageEventPacket* currPacket = (DamageEventPacket*)packet->data;
 			DamageEvent* dEvent = new DamageEvent(currPacket->damage);
 			eventManager.add(dEvent->getType(), dEvent);
 
@@ -160,7 +159,7 @@ void GameState::handleNetwork() {
 		}
 		case ID_HEAL_EVENT_MSG:
 		{
-			HealEventPacket* currPacket = (HealEventPacket*)packet;
+			HealEventPacket* currPacket = (HealEventPacket*)packet->data;
 			HealEvent* hEvent = new HealEvent(currPacket->amount);
 			eventManager.add(hEvent->getType(), hEvent);
 

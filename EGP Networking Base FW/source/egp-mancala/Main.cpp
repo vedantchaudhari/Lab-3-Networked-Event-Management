@@ -29,16 +29,8 @@ int handleNetworking(GameState* pGS) {
 int main(void) {
 	GameState gs;
 
-	ColorEvent* cEvent = new ColorEvent(1);
-	DamageEvent* dEvent = new DamageEvent(2);
-	HealEvent* hEvent = new HealEvent(33);
-
 	gs.initNetwork();
-
-	gs.eventManager.add(COLOR_EVENT, cEvent);
-	gs.eventManager.add(DAMAGE_EVENT, dEvent);
-	gs.eventManager.add(HEAL_EVENT, hEvent);
-
+	
 	egpThread networkingThread[1] = { 0 };
 	egpThreadCreate(networkingThread, (egpThreadFunc)handleNetworking, &gs);
 
