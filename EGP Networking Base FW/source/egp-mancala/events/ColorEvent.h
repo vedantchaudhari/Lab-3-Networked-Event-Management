@@ -19,10 +19,10 @@
 class ColorEvent : public Event {
 private:
 	EVENT_TYPE mType;
-	int color;
+	int mColor;
 
 public:
-	ColorEvent(int c) : mType(COLOR_EVENT), color(c) {};
+	ColorEvent(int c) : mType(COLOR_EVENT), mColor(c) {};
 
 	virtual void execute() override;
 };

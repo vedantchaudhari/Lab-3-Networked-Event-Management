@@ -184,3 +184,11 @@ void LinkedList::displayNode(Node *node)
 Node* LinkedList::getHead() {
 	return head.headNode;
 }
+
+void LinkedList::deleteHead() {
+	delete head.headNode;
+}
+
+void LinkedList::setHead(Node* n) {
+	head.headNode = n;
+}

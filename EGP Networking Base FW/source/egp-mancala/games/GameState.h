@@ -11,14 +11,32 @@
 // - checking service, which may retain a copy of the project on its database.
 
 #include "events/EventManager.h"
+#include "RakNet/BitStream.h"
+#include "RakNet/MessageIdentifiers.h"
+#include "RakNet/RakNetTypes.h"
 #include "RakNet/RakPeerInterface.h"
 
 class GameState {
 private:
+	struct NetworkData {
+		bool isHost;
+
+		unsigned int maxClients;
+		unsigned short serverPort;
+	};
 	
 public:
 	EventManager eventManager;
+	NetworkData mNetworkData;
 
 	RakNet::RakPeerInterface* mpPeer;
 	RakNet::SystemAddress mHostAddress;
+
+	void initNetwork();
+
+	// Game Loop
+	void handleDisplay();
+	void handleInput();
+	void handleNetwork();
+	void handleUpdate();
 };

@@ -16,6 +16,7 @@ enum EVENT_TYPE {
 	INVALID_TYPE,
 
 	COLOR_EVENT,
+	DAMAGE_EVENT,
 };
 
 const std::string EVENT_NAMES[3] = {

@@ -22,6 +22,18 @@ void EventManager::add(EVENT_TYPE type, Event* e) {
 
 void EventManager::execute() {
 	Node* currNode = eventList->getHead();
+	//Node* next = currNode->next;
+	if (currNode != NULL) {
+		currNode->event->execute();
+		eventList->removeFromHead();
+	}
+	//currNode->next
+	//eventList->deleteHead();
+	//eventList->setHead(currNode->next);
 
-	currNode->event->execute();
+	return;
+}
+
+int EventManager::getEventListLength() {
+	return eventList->getNoOfNodes();
 }

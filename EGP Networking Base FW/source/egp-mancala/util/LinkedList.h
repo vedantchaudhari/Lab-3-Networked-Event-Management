@@ -56,4 +56,6 @@ public:
 	void displayAllNodes();
 
 	Node* getHead();
+	void deleteHead();
+	void setHead(Node*);
 };

@@ -14,20 +14,15 @@
 
 #include <iostream>
 
-#include "Event.h"
-#include "ColorEvent.h"
-#include "DamageEvent.h"
-#include "util/LinkedList.h"
+#include "events/Event.h"
 
-class EventManager {
+class DamageEvent : public Event {
 private:
-	LinkedList* eventList;
+	EVENT_TYPE mType;
+	int mDamage;
 
 public:
-	EventManager();
+	DamageEvent(int dmg) : mType(DAMAGE_EVENT), mDamage(dmg) {};
 
-	void add(EVENT_TYPE type, Event* e);
-	void execute();
-
-	int getEventListLength();
+	virtual void execute() override;
 };
