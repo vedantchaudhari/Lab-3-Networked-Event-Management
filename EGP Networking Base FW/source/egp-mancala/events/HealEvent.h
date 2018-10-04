@@ -12,31 +12,17 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
-enum EVENT_TYPE {
-	INVALID_TYPE,
+#include <iostream>
 
-	COLOR_EVENT,
-	DAMAGE_EVENT,
-	HEAL_EVENT
-};
+#include "events/Event.h"
 
-const std::string EVENT_NAMES[3] = {
-	"Color Event",
-	"Damage Event",
-	"Heal Event"
-};
-
-class Event {
+class HealEvent : public Event {
 private:
 	EVENT_TYPE mType;
+	int mAmount;
 
 public:
-	Event() { mType = INVALID_TYPE; };
-	Event(EVENT_TYPE _type) : mType(_type) {};
-	virtual ~Event() {};
+	HealEvent(int a) : mType(HEAL_EVENT), mAmount(a) {};
 
-	virtual void execute() = 0;
-
-	std::string getName() { return EVENT_NAMES[mType]; };
-	EVENT_TYPE getType() const { return mType; };
+	virtual void execute() override;
 };

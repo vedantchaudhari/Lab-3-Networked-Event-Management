@@ -12,23 +12,23 @@
 // and provide copies to other academic staff, and/or communicate a copy of this project to a plagiarism 
 // - checking service, which may retain a copy of the project on its database.
 
-#include <iostream>
-
-#include "Event.h"
-#include "ColorEvent.h"
-#include "DamageEvent.h"
-#include "HealEvent.h"
-#include "util/LinkedList.h"
-
-class EventManager {
-private:
-	LinkedList* eventList;
-
-public:
-	EventManager();
-
-	void add(EVENT_TYPE type, Event* e);
-	void execute();
-
-	int getEventListLength();
+#pragma pack(push, 1)
+struct ColorEventPacket {
+	unsigned char typeID;
+	int color = 0;
 };
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+struct DamageEventPacket {
+	unsigned char typeID;
+	int damage = 0;
+};
+#pragma pack(pop)
+
+#pragma pack(push, 1)
+struct HealEventPacket {
+	unsigned char typeID;
+	int amount = 0;
+};
+#pragma pack(pop)

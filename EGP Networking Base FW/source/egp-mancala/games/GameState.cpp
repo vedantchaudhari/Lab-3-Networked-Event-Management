@@ -48,6 +48,35 @@ void GameState::initNetwork() {
 	}
 }
 
+void GameState::handleInput() {
+	if (GetAsyncKeyState(0x43) & 1) {		// C KEY PRESSED
+		ColorEventPacket colorEvent[1];
+		colorEvent->typeID = ID_COLOR_EVENT_MSG;
+		colorEvent-> color = 1;
+
+		if (mNetworkData.isHost) {
+			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				connectionGUID, true);
+		}
+	}
+	else if (GetAsyncKeyState(0x44) & 1) {	// D KEY PRESSED
+		DamageEventPacket damageEvent[1];
+		damageEvent->typeID = ID_DAMAGE_EVENT_MSG;
+		damageEvent->damage = 1;
+		
+		if (mNetworkData.isHost) {
+			mpPeer->Send((char*)damageEvent, sizeof(DamageEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				connectionGUID, true);
+		}
+	}
+	else if (GetAsyncKeyState(0x45) & 1) {	// E KEY PRESSED
+		
+	}
+	else if (GetAsyncKeyState(VK_ESCAPE)) {
+		exit = true;
+	}
+}
+
 void GameState::handleNetwork() {
 	RakNet::Packet* packet;
 
@@ -65,6 +94,7 @@ void GameState::handleNetwork() {
 			break;
 		case ID_REMOTE_NEW_INCOMING_CONNECTION:
 			std::cout << "A client has connected" << std::endl;
+			connectionGUID = packet->guid;
 			break;
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 		{
@@ -92,6 +122,18 @@ void GameState::handleNetwork() {
 				printf("Server has lost connection. \n");
 			}
 			break;
+		case ID_COLOR_EVENT_MSG:
+		{
+			ColorEventPacket* currPacket = (ColorEventPacket*)packet;
+			ColorEvent* cEvent = new ColorEvent(currPacket->color);
+			eventManager.add(cEvent->getType(), cEvent);
+
+			break;
+		}
+		case ID_DAMAGE_EVENT_MSG:
+		{
+			break;
+		}
 		default:
 			std::cout << "Default MSG" << std::endl;
 			break;

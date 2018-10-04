@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{5a0c8be7-5eb5-4212-9d16-a6aa52236ce8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{ac659170-da25-418a-af08-e35c49c42b30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.c">
@@ -54,6 +57,9 @@
     <ClCompile Include="..\..\..\source\egp-mancala\util\Thread.c">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\egp-mancala\events\HealEvent.cpp">
+      <Filter>Source Files\Events\Event</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\source\egp-mancala\mancala\MancalaUtils.h">
@@ -79,6 +85,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\source\egp-mancala\util\Thread.h">
       <Filter>Source Files\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\network\CustomPackets.h">
+      <Filter>Source Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\source\egp-mancala\events\HealEvent.h">
+      <Filter>Source Files\Events\Event</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -5,7 +5,6 @@
 // ---------------------------------------------------------------------
 
 long __stdcall egpThreadLaunchInternal(egpThread* pParam) {
-	//printf("\t hello thread \t");
 
 	pParam->isRunning = 1;
 	pParam->result = pParam->func(pParam->args);
