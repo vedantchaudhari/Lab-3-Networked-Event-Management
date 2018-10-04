@@ -39,7 +39,7 @@ public:
 	NetworkData mNetworkData;
 
 	RakNet::RakPeerInterface* mpPeer;
-	RakNet::SystemAddress mHostAddress;
+	RakNet::RakNetGUID hostGUID;
 	RakNet::RakNetGUID connectionGUID;
 
 	bool exit = false;

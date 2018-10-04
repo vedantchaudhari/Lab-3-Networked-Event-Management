@@ -58,6 +58,10 @@ void GameState::handleInput() {
 			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
 				connectionGUID, true);
 		}
+		else {
+			mpPeer->Send((char*)colorEvent, sizeof(ColorEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				hostGUID, true);
+		}
 	}
 	else if (GetAsyncKeyState(0x44) & 1) {	// D KEY PRESSED
 		DamageEventPacket damageEvent[1];
@@ -68,9 +72,24 @@ void GameState::handleInput() {
 			mpPeer->Send((char*)damageEvent, sizeof(DamageEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
 				connectionGUID, true);
 		}
+		else {
+			mpPeer->Send((char*)damageEvent, sizeof(DamageEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				hostGUID, true);
+		}
 	}
 	else if (GetAsyncKeyState(0x45) & 1) {	// E KEY PRESSED
-		
+		HealEventPacket healPacket[1];
+		healPacket->typeID = ID_HEAL_EVENT_MSG;
+		healPacket->amount = 1;
+
+		if (mNetworkData.isHost) {
+			mpPeer->Send((char*)healPacket, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				connectionGUID, true);
+		}
+		else {
+			mpPeer->Send((char*)healPacket, sizeof(HealEventPacket), HIGH_PRIORITY, RELIABLE_ORDERED, 0,
+				hostGUID, true);
+		}
 	}
 	else if (GetAsyncKeyState(VK_ESCAPE)) {
 		exit = true;
@@ -99,6 +118,7 @@ void GameState::handleNetwork() {
 		case ID_CONNECTION_REQUEST_ACCEPTED:
 		{
 			std::cout << "Connected to server" << std::endl;
+			hostGUID = packet->guid;
 			break;
 		}
 		case ID_NEW_INCOMING_CONNECTION:
@@ -132,6 +152,18 @@ void GameState::handleNetwork() {
 		}
 		case ID_DAMAGE_EVENT_MSG:
 		{
+			DamageEventPacket* currPacket = (DamageEventPacket*)packet;
+			DamageEvent* dEvent = new DamageEvent(currPacket->damage);
+			eventManager.add(dEvent->getType(), dEvent);
+
+			break;
+		}
+		case ID_HEAL_EVENT_MSG:
+		{
+			HealEventPacket* currPacket = (HealEventPacket*)packet;
+			HealEvent* hEvent = new HealEvent(currPacket->amount);
+			eventManager.add(hEvent->getType(), hEvent);
+
 			break;
 		}
 		default:
